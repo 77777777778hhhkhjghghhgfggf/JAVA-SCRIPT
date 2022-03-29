@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>object create 3 way using constructor function</h1>
+    <script>
+        // cretate object using constructor function
+        function product(name,price,discount,itemCode){
+            this.itemName=name;
+            this.price=price;
+            this.discount=discount;
+            this.itemCode=itemCode;
+            this.discountValue=function(){
+            return price*discount/100;
+            }
+
+        }
+        const mobile=new product('oneplus',3500,5,'oppo20');
+    
+        const Tv=new product('led',350000,5,'led6777');
+        const bat=new  product('royalss',100000,67,'royals653556');
+      
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Jost:ital,wght@1,100&display=swap');
+
+        ::before,
+        ::after {
+            margin: 0;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            font-family: "jost", sans-serif;
+        }
+
+        .main_div {
+            width: 100vw;
+            height: 100vh;
+            background-color: #f6f6f6;
+            display: grid;
+            place-items: center;
+
+        }
+
+        .music_container {
+            width: 35rem;
+            height: 55rem;
+            background-color: wheat;
+            border-radius: 2rem;
+            box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .music_container #title {
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+
+            word-spacing: 00.5rem;
+            color: black;
+            margin: 2rem 0 0.5rem 0;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+        }
+
+        .music_container #artist {
+            color: black;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-size: 2rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .img-container {
+            width: 25rem;
+            height: 25rem;
+            margin: auto;
+
+        }
+
+        img {
+            width: 95%;
+            height: 60%;
+            border-radius: 50%;
+            object-fit: cover;
+
+            box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4);
+        }
+
+        .music_controls {
+            width: 20rem;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            margin-top: 5rem;
+            align-items: center;
+
+        }
+
+        .music_controls .fas {
+            color: #111111;
+            font-size: 2rem;
+            cursor: pointer;
+            filter: drop-shadow(0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4));
+
+        }
+
+        .music_controls .main_button {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background-color: #111111;
+            color: #f6f6f6;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .music_controls .fas:hover {
+            color: grey;
+        }
+
+        .music_controls .fa-play:hover {
+            background-color: #f6f6f6;
+            color: #111111;
+            box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4);
+        }
+
+        .anime {
+            animation: rotateplayer 3s linear infinite;
+        }
+
+        @keyframes rotateplayer {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">Anil Gupta</h2>
+            <h3 id="artist"> loyalist</h3>
+            <div class="img_container">
+                <img src="images/anil-1.jpg" alt="">
+
+            </div>
+
+            <audio src="anil-1.mp3"></audio>
+            
+
+            <!------controls-->
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="previous"></i>
+                <i class="fas fa-play main_button" id="play" title="play"></i>
+                <i class="fas fa-forward" id="Next" title="Next"></i>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        const music = document.querySelector('audio');
+        const img = document.querySelector('img')
+        const play = document.getElementById('play');
+        const artist = document.getElementById('artist');
+        const title = document.getElementById('title');
+        const prev = document.getElementById('prev');
+        const Next = document.getElementById('Next');
+        const songs = [
+            {
+                name: "anil-1",
+                title: "Anil Gupta",
+                artist: "loyalist",
+            },
+
+
+            {
+                name: "anil-2",
+                title: "sappherious",
+                artist: "Aurora",
+            },
+
+            {
+                name: "anil-3",
+                title: "Walking farari",
+                artist: "Gorkhali Takma",
+            },
+        ];
+        let isPlaying = false;
+        //for play function
+
+        const playMusic = () => {
+            console.log(play.src);
+            isPlaying = true;
+            music.play();
+
+            play.classList.replace("fa-play", "fa-pause")
+            img.classList.add("anime");
+        };
+        //for pause function
+        const pauseMusic = () => {
+            isPlaying = false;
+            music.pause();
+
+            play.classList.replace("fa-pause", "fa-play")
+            img.classList.remove("anime");
+        };
+        play.addEventListener("click", () => {
+            if (isPlaying) {
+                pauseMusic();
+            }
+            else {
+                playMusic();
+            }
+
+        })
+        //changing the music data
+        const loadSong = (songs) => {
+            title.textContent = songs.title;
+            title.textContent = songs.artist;
+            music.src = songs.name + ".mp3";
+            img.src = "images/" + songs.name + ".jpg";
+
+        };
+
+        songIndex = 0;
+
+        
+
+        const nextSong = () => {
+            pauseMusic();
+            songIndex = (songIndex + 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+        const prevSong = () => { 
+            pauseMusic();
+             songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+        Next.addEventListener("click",()=>{
+            nextSong();
+        });
+        prev.addEventListener("click", ()=>{
+            prevSong();
+        });
+
+    </script>
+
+</body>
+
+</html>

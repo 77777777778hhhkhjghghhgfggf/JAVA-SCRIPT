@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>using construct function create object</h1>
+    <script>
+        function Product(name,price,itemCode,itemModel,discount){
+this.name=name;
+this.price=price;
+this.itemCode=itemCode;
+this.itemModel=itemModel;
+this.discount=discount;
+ function discountValue(){
+    return price*discount/100;
+}
+        }
+        const mobile=new Product('oppo',35000,387777,'oppo-F90',8);
+        const lapTOP=new Product('hp',59000,'hp-77777','hp-y ryzen5',20);
+        const tv=new Product('lg',60000,'lg-89888','Lg-mp40',30);
+        const bag=new Product('dell',5000,'dell-87','dell45op50',4);
+        const car=new Product('swift',5000000,'br-4800swiftdiz','swift-BR50',19);
+        
+        
+    </script>
+</body>
+</html>

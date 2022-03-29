@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>object create 2 way using factory function</h1>
+    <script>
+        //using factory function create object
+        //output console me dikhega jab ham product() enter krenge
+        function product(name,itemName,itemModel,itemCode,color){
+            return{
+                name:name,
+                itemName:name,
+                itemModel:itemModel,
+                itemCode:itemCode,
+                color:color,
+                notes:{
+                    Founder:"anil gupta"
+                }
+                
+
+            }
+            return product;
+        }
+        const mobile=product("realme","realme5s","5s",1234,"blue","founder");
+        const tv=product("led","ledsss56","led5678y",1234983893,"black","founder");
+        
+    </script>
+
+</body>
+</html>
